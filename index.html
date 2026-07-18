@@ -10,29 +10,61 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="background-glow"></div>
+    <div id="rocket-trail"></div>
+
     <div class="desktop-shell">
       <header class="topbar">
         <div class="brand">Launch OS</div>
         <div class="status-pill">Live mission feed</div>
       </header>
 
-      <main class="dashboard">
-        <section class="clock-card">
-          <p class="eyebrow">Current time</p>
-          <div id="clock" class="clock">--:--:--</div>
-          <div id="date" class="date">Loading date…</div>
-        </section>
-
-        <section class="launches-card">
-          <div class="card-header">
-            <div>
-              <p class="eyebrow">Upcoming launches</p>
-              <h1>Launches around the world</h1>
-            </div>
-            <div id="status" class="status-text">Loading launches…</div>
+      <main class="desktop-area">
+        <div class="window draggable" data-window="clock">
+          <div class="window-titlebar">
+            <span class="window-dots">
+              <span></span><span></span><span></span>
+            </span>
+            <span>Mission Clock</span>
           </div>
-          <div id="launch-list" class="launch-list"></div>
-        </section>
+          <section class="clock-card">
+            <p class="eyebrow">Current time</p>
+            <div id="clock" class="clock">--:--:--</div>
+            <div id="date" class="date">Loading date…</div>
+          </section>
+        </div>
+
+        <div class="window draggable" data-window="launches">
+          <div class="window-titlebar">
+            <span class="window-dots">
+              <span></span><span></span><span></span>
+            </span>
+            <span>Launch Feed</span>
+          </div>
+          <section class="launches-card">
+            <div class="card-header">
+              <div>
+                <p class="eyebrow">Upcoming launches</p>
+                <h1>Launches around the world</h1>
+              </div>
+              <div id="status" class="status-text">Loading launches…</div>
+            </div>
+            <div id="launch-list" class="launch-list"></div>
+          </section>
+        </div>
+
+        <div class="window draggable" data-window="notes">
+          <div class="window-titlebar">
+            <span class="window-dots">
+              <span></span><span></span><span></span>
+            </span>
+            <span>Mission Notes</span>
+          </div>
+          <section class="notes-card">
+            <p>Mission control is online.</p>
+            <p>Keep an eye on the sky and the launch clock.</p>
+          </section>
+        </div>
       </main>
     </div>
 

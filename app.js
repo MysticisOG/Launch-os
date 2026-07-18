@@ -2,6 +2,7 @@ const clockEl = document.getElementById('clock');
 const dateEl = document.getElementById('date');
 const launchListEl = document.getElementById('launch-list');
 const statusEl = document.getElementById('status');
+const rocketTrailEl = document.getElementById('rocket-trail');
 
 const featuredLaunches = [
   {
@@ -84,6 +85,54 @@ function loadLaunches() {
   statusEl.textContent = 'Showing featured launches';
 }
 
+function setupDrag() {
+  const windows = document.querySelectorAll('.draggable');
+
+  windows.forEach((windowEl) => {
+    const titlebar = windowEl.querySelector('.window-titlebar');
+    let active = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    titlebar.addEventListener('pointerdown', (event) => {
+      active = true;
+      titlebar.setPointerCapture(event.pointerId);
+      const rect = windowEl.getBoundingClientRect();
+      offsetX = event.clientX - rect.left;
+      offsetY = event.clientY - rect.top;
+    });
+
+    titlebar.addEventListener('pointermove', (event) => {
+      if (!active) return;
+      windowEl.style.left = `${Math.max(8, event.clientX - offsetX)}px`;
+      windowEl.style.top = `${Math.max(8, event.clientY - offsetY)}px`;
+    });
+
+    titlebar.addEventListener('pointerup', () => {
+      active = false;
+    });
+    titlebar.addEventListener('pointercancel', () => {
+      active = false;
+    });
+  });
+}
+
+function setupRocketTrail() {
+  let trailTimer;
+  document.addEventListener('pointermove', (event) => {
+    rocketTrailEl.style.left = `${event.clientX}px`;
+    rocketTrailEl.style.top = `${event.clientY}px`;
+    rocketTrailEl.style.opacity = '1';
+
+    clearTimeout(trailTimer);
+    trailTimer = setTimeout(() => {
+      rocketTrailEl.style.opacity = '0';
+    }, 120);
+  });
+}
+
 updateClock();
 setInterval(updateClock, 1000);
 loadLaunches();
+setupDrag();
+setupRocketTrail();

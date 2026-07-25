@@ -10,13 +10,21 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="background-stars"></div>
     <div class="background-glow"></div>
+    <canvas id="web-canvas"></canvas>
     <div id="rocket-trail"></div>
 
     <div class="desktop-shell">
       <header class="topbar">
-        <div class="brand">Launch OS</div>
-        <div class="status-pill">Live mission feed</div>
+        <div>
+          <div class="brand">Launch OS</div>
+          <div class="status-pill">Live mission feed</div>
+        </div>
+        <div class="toolbar-actions">
+          <button id="boost-toggle" class="toolbar-button" type="button">Engage Boost</button>
+          <button id="mission-message" class="toolbar-button" type="button">Mission Note</button>
+        </div>
       </header>
 
       <main class="desktop-area">

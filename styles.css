@@ -70,6 +70,33 @@ body {
 }
 .toolbar-button:hover { background: rgba(109, 229, 255, 0.14); transform: translateY(-1px); box-shadow: 0 10px 25px rgba(0,0,0,0.14); }
 .status-pill { padding: 8px 12px; border: 1px solid var(--border); border-radius: 999px; background: rgba(255,255,255,0.05); color: var(--accent); font-size: 0.9rem; }
+.feature-banner {
+  margin-top: 18px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: rgba(110, 231, 249, 0.12);
+  border: 1px solid rgba(110, 231, 249, 0.18);
+  color: #e9f5ff;
+  font-weight: 600;
+  max-width: min(820px, 100%);
+  line-height: 1.4;
+  animation: fadeBanner 0.35s ease-out;
+}
+.feature-banner.hidden {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+@keyframes fadeBanner {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .desktop-area { position: relative; min-height: 70vh; }
 .window {
   position: absolute;

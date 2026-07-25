@@ -7,6 +7,7 @@ const webCanvas = document.getElementById('web-canvas');
 const boostButton = document.getElementById('boost-toggle');
 const messageButton = document.getElementById('mission-message');
 const notesCard = document.querySelector('.notes-card');
+const featureBanner = document.getElementById('feature-banner');
 
 let boostMode = false;
 let cursorX = window.innerWidth / 2;
@@ -118,6 +119,11 @@ function toggleBoost() {
 function setupFeatureButtons() {
   boostButton.addEventListener('click', toggleBoost);
   messageButton.addEventListener('click', launchMessage);
+}
+
+function hideFeatureBanner() {
+  if (!featureBanner) return;
+  setTimeout(() => featureBanner.classList.add('hidden'), 9500);
 }
 
 function initWebCanvas() {
@@ -266,4 +272,5 @@ initWebCanvas();
 setupDrag();
 setupFeatureButtons();
 setupRocketTrail();
+hideFeatureBanner();
 window.addEventListener('resize', resizeWebCanvas);
